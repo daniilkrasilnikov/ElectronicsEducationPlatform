@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import {applyEdgeChanges, applyNodeChanges} from "@xyflow/react";
+import {v4 as uuidv4} from 'uuid';
 
 export interface SchemaState {
     components: any[],
@@ -28,8 +29,9 @@ export const schemaSlice = createSlice({
                 (component) => component.id !== action.payload
             );
         },
-        addConnection: (state, action: PayloadAction<any>) => {
-            state.connections.push(action.payload);
+        addConnection: (state, {payload}: PayloadAction<any>) => {
+            payload.id = uuidv4()
+            state.connections.push(payload);
         },
         removeConnection: (state, action: PayloadAction<any>) => {
             state.connections = state.connections.filter(

@@ -38,8 +38,8 @@ export const SchemaCanvas = () => {
                 onEdgesChange={onEdgesChange}
                 onConnect={onConnect}
             >
-                <Background />
-                <Controls />
+                <Background/>
+                <Controls/>
             </ReactFlow>
             <SchemaControls/>
         </>

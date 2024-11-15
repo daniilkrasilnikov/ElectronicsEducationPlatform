@@ -1,5 +1,5 @@
 import {useAppDispatch} from "../hooks/hooks.ts";
-import {generateEnergySource} from "../services/componentsController.ts";
+import {generateDiode, generateEnergySource} from "../services/componentsController.ts";
 import {addComponent} from "../stores/SchemaSlice.ts";
 
 export const SchemaControls = () => {
@@ -10,9 +10,15 @@ export const SchemaControls = () => {
         dispatch(addComponent(energySource));
     }
 
+    const handleDiodeAdd = () => {
+        const diode = generateDiode();
+        dispatch(addComponent(diode));
+    }
+
     return (
         <>
-            <button onClick={handleEnergySourceAdd}>Add energy source</button>
+            <button onClick={handleEnergySourceAdd}>Add Energy Source</button>
+            <button onClick={handleDiodeAdd}>Add Diode</button>
         </>
     )
 }
